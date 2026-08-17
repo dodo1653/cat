@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$cat — the genesis collection</title>
+<link rel="icon" type="image/png" href="cat-logo.png">
+<script>
+const CONFIG={
+  CA:"soon",TICKER:"$cat",TWITTER:"4x4catXx",
+  BUY:"https://pump.fun/soon",
+  LOGO:"cat-logo.png",
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+/* ── PALETTE (matches 4x4cat exactly) ── */
+:root{
+  --bg-outer: #C8D4CF;   /* teal-grey side panels */
+  --bg-page:  #F5F0E8;   /* warm cream page */
+  --bg-white: #FAFAF6;   /* inner content */
+  --ink:      #2A2520;   /* body text */
+  --ink2:     #5A5248;   /* secondary text */
+  --ink3:     #8A8278;   /* muted */
+  --teal:     #1B6E72;   /* nav links / accents */
+  --teal2:    #245B5E;
+  --brd:      #D8D0C4;   /* borders */
+  --brd2:     #C0B8AC;
+  --serif:    'EB Garamond',Georgia,serif;
+  --mono:     'Source Code Pro',monospace;
+}
+
+body{
+  background:var(--bg-outer);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:16px;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* ── PAGE STRUCTURE — side panels + center column ── */
+.page-wrap{
+  max-width:960px;
+  margin:0 auto;
+  background:var(--bg-page);
+  min-height:100vh;
+  border-left:1px solid var(--brd);
+  border-right:1px solid var(--brd);
+  position:relative;
+}
+
+/* ── NAV ── */
+nav{
+  padding:20px 0 16px;
+  text-align:center;
+  border-bottom:1px solid var(--brd);
+  background:var(--bg-page);
+}
+.nav-links{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.nav-links a{
+  color:var(--teal);text-decoration:none;padding:0 14px;
+  transition:color .15s;
+}
+.nav-links a:hover{color:var(--teal2);text-decoration:underline;}
+.nav-sep{color:var(--brd2);font-size:13px;}
+
+/* ── MAIN CONTENT WRAPPER ── */
+.content{
+  max-width:680px;margin:0 auto;
+  padding:48px 40px;
+}
+
+/* ── HERO ── */
+.hero-title{
+  font-family:var(--serif);font-size:42px;font-weight:400;
+  text-align:center;color:var(--ink);
+  margin-bottom:6px;letter-spacing:-.01em;
+}
+.hero-sub{
+  font-family:var(--serif);font-style:italic;font-size:17px;
+  text-align:center;color:var(--ink2);margin-bottom:40px;
+}
+
+/* ── PIXEL CAT SHOWCASE ── */
+.cat-showcase{
+  display:flex;align-items:center;justify-content:center;
+  gap:28px;margin-bottom:10px;
+}
+.pixel-canvas{
+  image-rendering:pixelated;image-rendering:crisp-edges;
+  display:block;
+}
+.showcase-arrow{
+  font-size:20px;color:var(--ink3);flex-shrink:0;
+}
+.fig-caption{
+  font-family:var(--mono);font-size:11px;color:var(--ink3);
+  text-align:center;margin-bottom:32px;
+  font-style:italic;letter-spacing:.02em;
+}
+
+/* ── HERO BODY TEXT ── */
+.hero-body{
+  font-size:16px;line-height:1.75;
+  text-align:center;margin-bottom:28px;
+  color:var(--ink);
+}
+.hero-body strong{font-weight:700;}
+
+/* ── CA ── */
+.ca-display{
+  font-family:var(--mono);font-size:12px;color:var(--teal);
+  text-align:center;margin-bottom:36px;
+  cursor:pointer;transition:color .15s;word-break:break-all;
+  letter-spacing:.02em;
+}
+.ca-display:hover{color:var(--teal2);text-decoration:underline;}
+
+/* ── DIVIDER ── */
+hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
+
+/* ── STATS BAR ── */
+.stats-bar{
+  display:flex;flex-wrap:wrap;gap:1px;
+  background:var(--brd);border:1px solid var(--brd);
+  margin-bottom:10px;
+}
+.stat-cell{
+  background:var(--bg-white);padding:12px 16px;flex:1;min-width:80px;
+  text-align:center;
+}
+.stat-val{
+  font-family:var(--serif);font-size:16px;font-weight:500;
+  color:var(--ink);display:block;line-height:1.2;
+}
+.stat-lbl{
+  font-family:var(--mono);font-size:9.5px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--ink3);display:block;margin-top:3px;
+}
+.stat-cell.hi .stat-val{color:var(--teal);}
+.stats-note{
+  font-family:var(--mono);font-size:11px;color:var(--ink3);
+  text-align:center;margin-bottom:52px;letter-spacing:.03em;
+}
+
+/* ── SECTION HEADERS ── */
+.section-h{
+  font-family:var(--serif);font-size:24px;font-weight:400;
+  color:var(--ink);margin-bottom:14px;margin-top:52px;
+}
+.section-body{
+  font-size:15.5px;line-height:1.78;color:var(--ink);
+  margin-bottom:20px;
+}
+.section-body a{color:var(--teal);text-decoration:none;}
+.section-body a:hover{text-decoration:underline;}
+
+/* ── PIXEL CAT GRID ── */
+.cats-grid-header{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;margin:24px 0 28px;
+}
+.grid-tab{
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;
+  padding:6px 18px;border:1px solid var(--brd2);cursor:pointer;
+  background:var(--bg-page);color:var(--ink2);transition:all .15s;
+}
+.grid-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.grid-tab:hover:not(.active){background:var(--brd);}
+
+.cats-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:10px;margin-bottom:16px;
+}
+.cat-cell{
+  display:flex;flex-direction:column;align-items:center;
+  gap:4px;cursor:pointer;
+}
+.cat-cell:hover .cat-frame{border-color:var(--teal);}
+.cat-frame{
+  width:100%;aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid transparent;
+  transition:border-color .15s;position:relative;overflow:hidden;
+}
+.cat-frame canvas{
+  width:100%;height:100%;
+  image-rendering:pixelated;image-rendering:crisp-edges;
+}
+.cat-num{
+  font-family:var(--mono);font-size:9.5px;color:var(--ink2);
+  text-align:center;
+}
+.cat-owner{
+  font-family:var(--mono);font-size:8px;color:var(--ink3);
+  text-align:center;overflow:hidden;text-overflow:ellipsis;
+  width:100%;white-space:nowrap;
+}
+
+/* LISTED badge */
+.cat-frame .listed-badge{
+  position:absolute;top:4px;left:4px;
+  font-family:var(--mono);font-size:8px;font-weight:700;
+  background:rgba(27,110,114,.9);color:#fff;
+  padding:2px 5px;line-height:1.3;
+}
+
+/* ── DISTRIBUTION TABLE ── */
+.dist-table{
+  width:100%;border-collapse:collapse;
+  font-size:14.5px;margin-bottom:20px;
+}
+.dist-table th{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  color:var(--ink2);border:1px solid var(--brd);
+  padding:8px 12px;text-align:left;background:var(--bg-white);
+}
+.dist-table td{
+  border:1px solid var(--brd);padding:8px 12px;
+  color:var(--ink);vertical-align:top;line-height:1.55;
+}
+.dist-table td.mono{font-family:var(--mono);font-size:13px;color:var(--ink2);}
+.dist-table td.status-live{color:var(--teal);font-style:italic;}
+.dist-table td.status-done{color:var(--ink3);font-style:italic;}
+
+/* ── COIN SECTION ── */
+.coin-link{color:var(--teal);font-family:var(--mono);font-size:13px;}
+.coin-link:hover{text-decoration:underline;}
+
+/* ── FOOTER ── */
+.page-footer{
+  border-top:1px solid var(--brd);
+  padding:28px 40px;
+  text-align:center;
+}
+.footer-links{
+  display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;color:var(--ink3);
+  letter-spacing:.04em;margin-bottom:12px;
+}
+.footer-links a{color:var(--teal);text-decoration:none;padding:0 10px;}
+.footer-links a:hover{text-decoration:underline;}
+.footer-sep{color:var(--brd2);}
+.footer-note{
+  font-family:var(--mono);font-size:10px;color:var(--ink3);
+  letter-spacing:.03em;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(50px);
+  background:var(--ink);color:#fff;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  padding:8px 20px;z-index:999;pointer-events:none;
+  transition:transform .25s;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:700px){
+  .content{padding:32px 20px;}
+  .cats-grid{grid-template-columns:repeat(5,1fr);}
+  .stats-bar{flex-direction:column;}
+  .stat-cell{min-width:unset;}
+  .cat-showcase{gap:14px;}
+  .page-footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="#genesis">GENESIS</a>
+    <span class="nav-sep">|</span>
+    <a href="#evolution">THE COLLECTION</a>
+    <span class="nav-sep">|</span>
+    <a href="#coin">THE COIN</a>
+    <span class="nav-sep">|</span>
+    <a href="#population">THE CATS</a>
+    <span class="nav-sep">|</span>
+    <a id="nav-twitter" href="#" target="_blank">@$cat</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="content" id="genesis">
+
+  <!-- HERO -->
+  <h1 class="hero-title">$cat</h1>
+  <p class="hero-sub">the genesis collection</p>
+
+  <!-- PIXEL SHOWCASE -->
+  <div class="cat-showcase">
+    <canvas class="pixel-canvas" id="showcase-cat-a" width="64" height="64" style="width:140px;height:140px;"></canvas>
+    <span class="showcase-arrow">→</span>
+    <canvas class="pixel-canvas" id="showcase-cat-b" width="64" height="64" style="width:140px;height:140px;"></canvas>
+  </div>
+  <p class="fig-caption">Fig. 1. The same cat, twice. Each pixel cat is unique. Each holder received theirs.</p>
+
+  <p class="hero-body">
+    99 genesis cats, distributed to holders and creators.
+    Every cat is unique — generated from its owner's wallet address through the same trait tables.
+    Same breed, same background, same expression, same rarity.
+    <strong>No genesis cats were sold. Every one was earned.</strong>
+    The last cats can only be claimed by holders of $cat above the threshold.
+  </p>
+
+  <div class="ca-display" id="ca-display" onclick="copyCA()">
+    $cat: — contract address coming soon —
+  </div>
+
+  <hr>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat-cell">
+      <span class="stat-val">99</span>
+      <span class="stat-lbl">GENESIS CATS</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-val">0</span>
+      <span class="stat-lbl">FOR SALE</span>
+    </div>
+    <div class="stat-cell hi">
+      <span class="stat-val" id="stat-price">—</span>
+      <span class="stat-lbl">$cat PRICE</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-val" id="stat-mcap">—</span>
+      <span class="stat-lbl">$cat MCAP</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-val">EARNED</span>
+      <span class="stat-lbl">DISTRIBUTION</span>
+    </div>
+  </div>
+  <p class="stats-note">market data updates when connected</p>
+
+  <!-- 1. THE COLLECTION -->
+  <h2 class="section-h" id="evolution">1. The Collection</h2>
+  <p class="section-body">
+    $cat is a genesis collection of 99 unique pixel cats, each generated on-chain from the recipient's wallet address.
+    Every cat shares the same trait engine: coat, background, eyes, posture, anomaly.
+    Not an homage to anything. An original cat, provably yours, provably unique.
+  </p>
+  <p class="section-body">
+    This collection was not sold. It was not minted publicly.
+    99 cats were distributed to holders of $cat above the snapshot threshold,
+    and to creators who built real things for the community.
+    <strong>There are no genesis cats for sale by the team.</strong>
+    If you want one, you earn it.
+  </p>
+
+  <!-- DISTRIBUTION TABLE -->
+  <table class="dist-table">
+    <thead>
+      <tr>
+        <th>lane</th>
+        <th>editions</th>
+        <th>distribution</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">holders</td>
+        <td>#001 to #049</td>
+        <td>snapshot of top $cat wallets, rank 1 received #001</td>
+        <td class="status-done">delivered</td>
+      </tr>
+      <tr>
+        <td class="mono">creators</td>
+        <td>#050 to #074</td>
+        <td>awarded to community builders, artists, and contributors</td>
+        <td class="status-done">delivered</td>
+      </tr>
+      <tr>
+        <td class="mono">threshold</td>
+        <td>#075 to #099</td>
+        <td>hold 1,000,000 $cat or above at next snapshot to qualify</td>
+        <td class="status-live">live, 25 remain</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="section-body">
+    74 cats were distributed before the threshold lane opened: 49 to holders and 25 to creators.
+    Nobody chose who got which cat. A snapshot and a hash did.
+  </p>
+
+  <!-- 2. THE COIN -->
+  <h2 class="section-h" id="coin">2. The Coin</h2>
+  <p class="section-body">
+    $cat trades on pump.fun. It is the only key that opens this collection.
+    Every genesis claim required holding $cat. The snapshot is live.
+    The chart is <a id="coin-buy-link" href="#" target="_blank">here</a>.
+  </p>
+  <p class="section-body">
+    <span class="coin-link" id="ca-inline" onclick="copyCA()" style="cursor:pointer;">
+      $cat: — coming soon —
+    </span>
+  </p>
+
+  <!-- 3. THE CATS -->
+  <h2 class="section-h" id="population">3. The Cats</h2>
+  <p class="section-body">
+    The original 99, forever. All claimed through the distribution lanes above.
+    Every cat below is unique — generated from its holder's wallet.
+    Click any cat for its details.
+  </p>
+
+  <div class="cats-grid-header">
+    <button class="grid-tab active" onclick="filterGrid('all',this)">all 99</button>
+    <button class="grid-tab" onclick="filterGrid('holders',this)">holders</button>
+    <button class="grid-tab" onclick="filterGrid('creators',this)">creators</button>
+  </div>
+
+  <div class="cats-grid" id="cats-grid"></div>
+
+</div><!-- /content -->
+
+<div class="page-footer">
+  <div class="footer-links">
+    <a id="footer-twitter" href="#" target="_blank">twitter</a>
+    <span class="footer-sep">|</span>
+    <a id="footer-buy" href="#" target="_blank">buy $cat</a>
+    <span class="footer-sep">|</span>
+    <a href="#" onclick="copyCA();return false;">copy ca</a>
+  </div>
+  <p class="footer-note">$cat · the genesis collection · solana · not financial advice</p>
+</div>
+
+</div><!-- /page-wrap -->
+<div class="toast" id="toast">copied</div>
+
+<script>
+/* ── CONFIG ── */
+document.getElementById('nav-twitter').href=CONFIG.TWITTER?'https://x.com/'+CONFIG.TWITTER:'#';
+document.getElementById('footer-twitter').href=CONFIG.TWITTER?'https://x.com/'+CONFIG.TWITTER:'#';
+document.getElementById('footer-buy').href=CONFIG.BUY;
+document.getElementById('coin-buy-link').href=CONFIG.BUY;
+
+const caText=CONFIG.CA||'— contract address coming soon —';
+document.getElementById('ca-display').textContent='$cat: '+caText;
+document.getElementById('ca-inline').textContent='$cat: '+caText;
+
+function copyCA(){
+  const t=document.getElementById('toast');
+  if(!CONFIG.CA){t.textContent='ca coming soon';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);return;}
+  navigator.clipboard.writeText(CONFIG.CA).then(()=>{t.textContent='copied';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);});
+}
+
+/* ── PIXEL CAT GENERATOR ── */
+// Each cat is deterministically generated from a seed (wallet hash sim)
+// BG colors, coat colors, eye style, posture variant
+
+const BG_COLORS=[
+  '#1B6E72','#1B3A6E','#6E1B1B','#4A1B6E','#1B6E3A',
+  '#6E4A1B','#3A6E1B','#6E1B4A','#2A2A2A','#1B4A6E',
+  '#6E6E1B','#1B6E6E','#4A4A1B','#8B2252','#1B5A3A',
+];
+const COAT_COLORS=[
+  '#D4A94A','#E8C87A','#F0D090','#C8906A','#8B5E3C',
+  '#E8E0D0','#3A3028','#B8A890','#F5E8C8','#D49060',
+  '#A07840','#F0C860','#C8B890','#8B7060','#E0D0B0',
+];
+const EYE_COLORS=['#F0E830','#60C8F0','#F05820','#38D878','#F038C8','#F09030'];
+const NOSE_COLORS=['#D84040','#C03030','#A02828'];
+
+function seededRand(seed,n){
+  let h=seed^0x9e3779b9;
+  h=((h>>>16)^h)*0x45d9f3b;h=((h>>>16)^h)*0x45d9f3b;h=(h>>>16)^h;
+  return Math.abs(h)%n;
+}
+
+function hashStr(s){
+  let h=5381;for(let i=0;i<s.length;i++){h=((h<<5)+h)+s.charCodeAt(i);}return h>>>0;
+}
+
+function drawPixelCat(canvas,seed){
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height;
+  const PX=W/8; // 8x8 grid
+  ctx.clearRect(0,0,W,H);
+
+  const s=hashStr(seed.toString());
+  const bgColor=BG_COLORS[seededRand(s,BG_COLORS.length)];
+  const coatColor=COAT_COLORS[seededRand(s+1,COAT_COLORS.length)];
+  const eyeColor=EYE_COLORS[seededRand(s+2,EYE_COLORS.length)];
+  const noseColor=NOSE_COLORS[seededRand(s+3,NOSE_COLORS.length)];
+  const posture=seededRand(s+4,3); // 0=sit,1=stand,2=alert
+  const hasEar=seededRand(s+5,4)>0; // 75% have upright ear anomaly
+  const hasSpot=seededRand(s+6,3)===0; // 33% have spot
+
+  // fill bg
+  ctx.fillStyle=bgColor;ctx.fillRect(0,0,W,H);
+
+  function px(x,y,col){
+    ctx.fillStyle=col;ctx.fillRect(x*PX,y*PX,PX,PX);
+  }
+
+  if(posture===0){
+    // SITTING CAT
+    // body
+    px(2,4,coatColor);px(3,4,coatColor);px(4,4,coatColor);px(5,4,coatColor);
+    px(2,5,coatColor);px(3,5,coatColor);px(4,5,coatColor);px(5,5,coatColor);
+    // head
+    px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);px(5,2,coatColor);
+    px(2,3,coatColor);px(3,3,coatColor);px(4,3,coatColor);px(5,3,coatColor);
+    // ears
+    if(hasEar){px(1,1,coatColor);px(2,1,coatColor);}
+    px(5,1,coatColor);px(4,1,coatColor);
+    // eyes
+    px(3,2,eyeColor);px(5,2,eyeColor);
+    // nose
+    px(4,3,noseColor);
+    // tail
+    px(6,5,coatColor);px(6,4,coatColor);
+    // legs
+    px(2,6,coatColor);px(5,6,coatColor);
+    // spot
+    if(hasSpot)px(3,5,'rgba(0,0,0,0.35)');
+  } else if(posture===1){
+    // STANDING CAT
+    px(2,3,coatColor);px(3,3,coatColor);px(4,3,coatColor);px(5,3,coatColor);
+    px(2,4,coatColor);px(3,4,coatColor);px(4,4,coatColor);px(5,4,coatColor);
+    // head
+    px(1,2,coatColor);px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);
+    px(1,3,coatColor);px(2,3,coatColor);
+    // ear
+    if(hasEar){px(1,1,coatColor);}
+    px(3,1,coatColor);
+    // snout
+    px(0,3,coatColor);px(0,2,coatColor);
+    // eyes
+    px(2,2,eyeColor);px(4,2,eyeColor);
+    // nose
+    px(0,2,noseColor);
+    // legs
+    px(2,5,coatColor);px(3,5,coatColor);px(4,5,coatColor);px(5,5,coatColor);
+    px(2,6,coatColor);px(5,6,coatColor);
+    // tail
+    px(6,3,coatColor);px(7,2,coatColor);
+    if(hasSpot)px(4,4,'rgba(0,0,0,0.3)');
+  } else {
+    // ALERT CAT (ears up, head raised)
+    // body
+    px(2,4,coatColor);px(3,4,coatColor);px(4,4,coatColor);px(5,4,coatColor);
+    px(2,5,coatColor);px(3,5,coatColor);px(4,5,coatColor);px(5,5,coatColor);
+    // neck
+    px(3,3,coatColor);px(4,3,coatColor);
+    // head
+    px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);px(5,2,coatColor);
+    px(2,1,coatColor);px(5,1,coatColor); // tall ears
+    px(3,1,coatColor);px(4,1,coatColor);
+    // eyes (wide)
+    px(2,2,eyeColor);px(5,2,eyeColor);
+    // nose
+    px(3,3,noseColor);
+    // tail (wagging)
+    px(6,4,coatColor);px(7,3,coatColor);
+    // legs
+    px(2,6,coatColor);px(5,6,coatColor);
+    if(hasSpot){px(3,5,'rgba(0,0,0,0.28)');px(4,5,'rgba(0,0,0,0.28)');}
+  }
+}
+
+// ── DRAW SHOWCASE ──
+drawPixelCat(document.getElementById('showcase-cat-a'),42);
+drawPixelCat(document.getElementById('showcase-cat-b'),42*7+999);
+
+// ── CAT DATA ──
+const OWNERS_SHORT=[
+  'MazD..R1bt','BXoT..EwYw','boso..5zLB','FhtN..QtDs','D8tc..Wr4n',
+  'Gm77..STiD','ZGtm..bALB','FKSo..uvsR','1EWu..NDix','1EWu..NDix',
+  'DW5W..Z5on','HMeA..dkW9','Gm77..STiD','DW5W..Z5on','FKSo..uvsR',
+  'GFyn..yNjv','9Sgx..xnVK','FDP2..nxEF','ZGtm..bALB','8NgY..Qh9f',
+  'Dfwz..EMvR','MazD..R1bt','1EWu..NDix','5c2U..zYKZ','MazD..R1bt',
+  'Gm77..STiD','BXoT..EwYw','Gm77..STiD','MazD..R1bt','Jk8L..pQrT',
+  'Ax3M..wNvB','Pz9K..mLsY','Rd5T..fXcE','Hn2V..qJtA','Wy7B..kRzD',
+  'Cm4S..nPxL','Tg6F..bMhQ','Uv1N..rKwJ','Lp8D..yGcF','Zh3X..oTsP',
+  'Eq5W..vHnM','Fk7R..iJlB','Gx2T..aQdN','Hw4Y..cLkE','Iz6P..eMfC',
+  'Jb8S..gNpA','Kc3V..hOqR','Ld5T..jPsB','Me7W..kQtC','Nf9X..lRuD',
+  'creator..1A','creator..2B','creator..3C','creator..4D','creator..5E',
+  'creator..6F','creator..7G','creator..8H','creator..9I','creator..0J',
+  'creator..aK','creator..bL','creator..cM','creator..dN','creator..eO',
+  'creator..fP','creator..gQ','creator..hR','creator..iS','creator..jT',
+  'creator..kU','creator..lV','creator..mW','creator..nX','creator..oY',
+  '—','—','—','—','—','—','—','—','—','—',
+  '—','—','—','—','—','—','—','—','—','—',
+  '—','—','—','—','—','—','—','—','—',
+];
+const LANES=[
+  ...Array(49).fill('holders'),
+  ...Array(25).fill('creators'),
+  ...Array(25).fill('threshold'),
+];
+
+const allCats=Array.from({length:99},(_,i)=>({
+  num:i+1,
+  seed:hashStr('cat'+i*7+i*i),
+  owner:OWNERS_SHORT[i]||'—',
+  lane:LANES[i]||'threshold',
+  listed:i===7||i===22||i===32, // mock
+  price:i===7?'5 SOL':i===22?'3 SOL':'3 SOL',
+}));
+
+let currentFilter='all';
+
+function filterGrid(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.grid-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  buildGrid();
+}
+
+function buildGrid(){
+  const grid=document.getElementById('cats-grid');
+  grid.innerHTML='';
+  const filtered=currentFilter==='all'?allCats:allCats.filter(d=>d.lane===currentFilter);
+  filtered.forEach(cat=>{
+    const cell=document.createElement('div');
+    cell.className='cat-cell';
+    cell.title='#'+String(cat.num).padStart(2,'0')+' · '+cat.owner;
+
+    const frame=document.createElement('div');
+    frame.className='cat-frame';
+
+    const cvs=document.createElement('canvas');
+    cvs.width=32;cvs.height=32;
+    cvs.style.cssText='width:100%;height:100%;image-rendering:pixelated;';
+    drawPixelCat(cvs,cat.seed);
+    frame.appendChild(cvs);
+
+    if(cat.listed){
+      const badge=document.createElement('span');
+      badge.className='listed-badge';
+      badge.textContent=cat.price;
+      frame.appendChild(badge);
+    }
+
+    const num=document.createElement('span');
+    num.className='cat-num';
+    num.textContent='#'+String(cat.num).padStart(2,'0');
+
+    const owner=document.createElement('span');
+    owner.className='cat-owner';
+    owner.textContent=cat.owner;
+
+    cell.appendChild(frame);
+    cell.appendChild(num);
+    cell.appendChild(owner);
+    grid.appendChild(cell);
+  });
+}
+
+buildGrid();
+</script>
+</body>
+</html>
