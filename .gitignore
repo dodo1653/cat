@@ -1,4 +1,2 @@
-node_modules/
-dist/
-serve.mjs
-static.json
+node_modules
+.DS_Store

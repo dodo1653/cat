@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$cat — the genesis collection</title>
-<link rel="icon" type="image/png" href="cat-logo.png">
+<title>$TOAD — the genesis collection</title>
+<link rel="icon" type="image/png" href="toad-logo.png">
 <script>
 const CONFIG={
-  CA:"soon",TICKER:"$cat",TWITTER:"4x4catXx",
+  CA:"soon",TICKER:"$TOAD",TWITTER:"4x4toadX",
   BUY:"https://pump.fun/soon",
-  LOGO:"cat-logo.png",
+  LOGO:"toad-logo.png",
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@ const CONFIG={
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 
-/* ── PALETTE (matches 4x4cat exactly) ── */
+/* ── PALETTE (matches 4x4toad exactly) ── */
 :root{
   --bg-outer: #C8D4CF;   /* teal-grey side panels */
   --bg-page:  #F5F0E8;   /* warm cream page */
@@ -91,8 +91,8 @@ nav{
   text-align:center;color:var(--ink2);margin-bottom:40px;
 }
 
-/* ── PIXEL CAT SHOWCASE ── */
-.cat-showcase{
+/* ── PIXEL TOAD SHOWCASE ── */
+.toad-showcase{
   display:flex;align-items:center;justify-content:center;
   gap:28px;margin-bottom:10px;
 }
@@ -165,8 +165,8 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
 .section-body a{color:var(--teal);text-decoration:none;}
 .section-body a:hover{text-decoration:underline;}
 
-/* ── PIXEL CAT GRID ── */
-.cats-grid-header{
+/* ── PIXEL TOAD GRID ── */
+.toads-grid-header{
   display:flex;align-items:center;justify-content:center;
   gap:10px;margin:24px 0 28px;
 }
@@ -178,37 +178,37 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
 .grid-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
 .grid-tab:hover:not(.active){background:var(--brd);}
 
-.cats-grid{
+.toads-grid{
   display:grid;grid-template-columns:repeat(7,1fr);
   gap:10px;margin-bottom:16px;
 }
-.cat-cell{
+.toad-cell{
   display:flex;flex-direction:column;align-items:center;
   gap:4px;cursor:pointer;
 }
-.cat-cell:hover .cat-frame{border-color:var(--teal);}
-.cat-frame{
+.toad-cell:hover .toad-frame{border-color:var(--teal);}
+.toad-frame{
   width:100%;aspect-ratio:1;
   display:flex;align-items:center;justify-content:center;
   border:1.5px solid transparent;
   transition:border-color .15s;position:relative;overflow:hidden;
 }
-.cat-frame canvas{
+.toad-frame canvas{
   width:100%;height:100%;
   image-rendering:pixelated;image-rendering:crisp-edges;
 }
-.cat-num{
+.toad-num{
   font-family:var(--mono);font-size:9.5px;color:var(--ink2);
   text-align:center;
 }
-.cat-owner{
+.toad-owner{
   font-family:var(--mono);font-size:8px;color:var(--ink3);
   text-align:center;overflow:hidden;text-overflow:ellipsis;
   width:100%;white-space:nowrap;
 }
 
 /* LISTED badge */
-.cat-frame .listed-badge{
+.toad-frame .listed-badge{
   position:absolute;top:4px;left:4px;
   font-family:var(--mono);font-size:8px;font-weight:700;
   background:rgba(27,110,114,.9);color:#fff;
@@ -268,10 +268,10 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
 
 @media(max-width:700px){
   .content{padding:32px 20px;}
-  .cats-grid{grid-template-columns:repeat(5,1fr);}
+  .toads-grid{grid-template-columns:repeat(5,1fr);}
   .stats-bar{flex-direction:column;}
   .stat-cell{min-width:unset;}
-  .cat-showcase{gap:14px;}
+  .toad-showcase{gap:14px;}
   .page-footer{padding:20px;}
 }
 </style>
@@ -288,9 +288,9 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
     <span class="nav-sep">|</span>
     <a href="#coin">THE COIN</a>
     <span class="nav-sep">|</span>
-    <a href="#population">THE CATS</a>
+    <a href="#population">THE TOADS</a>
     <span class="nav-sep">|</span>
-    <a id="nav-twitter" href="#" target="_blank">@$cat</a>
+    <a id="nav-twitter" href="#" target="_blank">@$TOAD</a>
   </div>
 </nav>
 
@@ -298,27 +298,27 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
 <div class="content" id="genesis">
 
   <!-- HERO -->
-  <h1 class="hero-title">$cat</h1>
+  <h1 class="hero-title">$TOAD</h1>
   <p class="hero-sub">the genesis collection</p>
 
   <!-- PIXEL SHOWCASE -->
-  <div class="cat-showcase">
-    <canvas class="pixel-canvas" id="showcase-cat-a" width="64" height="64" style="width:140px;height:140px;"></canvas>
+  <div class="toad-showcase">
+    <canvas class="pixel-canvas" id="showcase-toad-a" width="64" height="64" style="width:140px;height:140px;"></canvas>
     <span class="showcase-arrow">→</span>
-    <canvas class="pixel-canvas" id="showcase-cat-b" width="64" height="64" style="width:140px;height:140px;"></canvas>
+    <canvas class="pixel-canvas" id="showcase-toad-b" width="64" height="64" style="width:140px;height:140px;"></canvas>
   </div>
-  <p class="fig-caption">Fig. 1. The same cat, twice. Each pixel cat is unique. Each holder received theirs.</p>
+  <p class="fig-caption">Fig. 1. The same toad, twice. Each pixel toad is unique. Each holder received theirs.</p>
 
   <p class="hero-body">
-    99 genesis cats, distributed to holders and creators.
-    Every cat is unique — generated from its owner's wallet address through the same trait tables.
+    99 genesis toads, distributed to holders and creators.
+    Every toad is unique — generated from its owner's wallet address through the same trait tables.
     Same breed, same background, same expression, same rarity.
-    <strong>No genesis cats were sold. Every one was earned.</strong>
-    The last cats can only be claimed by holders of $cat above the threshold.
+    <strong>No genesis toads were sold. Every one was earned.</strong>
+    The last toads can only be claimed by holders of $TOAD above the threshold.
   </p>
 
   <div class="ca-display" id="ca-display" onclick="copyCA()">
-    $cat: — contract address coming soon —
+    $TOAD: — contract address coming soon —
   </div>
 
   <hr>
@@ -327,7 +327,7 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
   <div class="stats-bar" id="stats-bar">
     <div class="stat-cell">
       <span class="stat-val">99</span>
-      <span class="stat-lbl">GENESIS CATS</span>
+      <span class="stat-lbl">GENESIS TOADS</span>
     </div>
     <div class="stat-cell">
       <span class="stat-val">0</span>
@@ -335,11 +335,11 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
     </div>
     <div class="stat-cell hi">
       <span class="stat-val" id="stat-price">—</span>
-      <span class="stat-lbl">$cat PRICE</span>
+      <span class="stat-lbl">$TOAD PRICE</span>
     </div>
     <div class="stat-cell">
       <span class="stat-val" id="stat-mcap">—</span>
-      <span class="stat-lbl">$cat MCAP</span>
+      <span class="stat-lbl">$TOAD MCAP</span>
     </div>
     <div class="stat-cell">
       <span class="stat-val">EARNED</span>
@@ -351,15 +351,15 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
   <!-- 1. THE COLLECTION -->
   <h2 class="section-h" id="evolution">1. The Collection</h2>
   <p class="section-body">
-    $cat is a genesis collection of 99 unique pixel cats, each generated on-chain from the recipient's wallet address.
-    Every cat shares the same trait engine: coat, background, eyes, posture, anomaly.
-    Not an homage to anything. An original cat, provably yours, provably unique.
+    $TOAD is a genesis collection of 99 unique pixel toads, each generated on-chain from the recipient's wallet address.
+    Every toad shares the same trait engine: coat, background, eyes, posture, anomaly.
+    Not an homage to anything. An original toad, provably yours, provably unique.
   </p>
   <p class="section-body">
     This collection was not sold. It was not minted publicly.
-    99 cats were distributed to holders of $cat above the snapshot threshold,
+    99 toads were distributed to holders of $TOAD above the snapshot threshold,
     and to creators who built real things for the community.
-    <strong>There are no genesis cats for sale by the team.</strong>
+    <strong>There are no genesis toads for sale by the team.</strong>
     If you want one, you earn it.
   </p>
 
@@ -377,7 +377,7 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
       <tr>
         <td class="mono">holders</td>
         <td>#001 to #049</td>
-        <td>snapshot of top $cat wallets, rank 1 received #001</td>
+        <td>snapshot of top $TOAD wallets, rank 1 received #001</td>
         <td class="status-done">delivered</td>
       </tr>
       <tr>
@@ -389,45 +389,45 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
       <tr>
         <td class="mono">threshold</td>
         <td>#075 to #099</td>
-        <td>hold 1,000,000 $cat or above at next snapshot to qualify</td>
+        <td>hold 1,000,000 $TOAD or above at next snapshot to qualify</td>
         <td class="status-live">live, 25 remain</td>
       </tr>
     </tbody>
   </table>
 
   <p class="section-body">
-    74 cats were distributed before the threshold lane opened: 49 to holders and 25 to creators.
-    Nobody chose who got which cat. A snapshot and a hash did.
+    74 toads were distributed before the threshold lane opened: 49 to holders and 25 to creators.
+    Nobody chose who got which toad. A snapshot and a hash did.
   </p>
 
   <!-- 2. THE COIN -->
   <h2 class="section-h" id="coin">2. The Coin</h2>
   <p class="section-body">
-    $cat trades on pump.fun. It is the only key that opens this collection.
-    Every genesis claim required holding $cat. The snapshot is live.
+    $TOAD trades on pump.fun. It is the only key that opens this collection.
+    Every genesis claim required holding $toad. The snapshot is live.
     The chart is <a id="coin-buy-link" href="#" target="_blank">here</a>.
   </p>
   <p class="section-body">
     <span class="coin-link" id="ca-inline" onclick="copyCA()" style="cursor:pointer;">
-      $cat: — coming soon —
+      $TOAD: — coming soon —
     </span>
   </p>
 
-  <!-- 3. THE CATS -->
-  <h2 class="section-h" id="population">3. The Cats</h2>
+  <!-- 3. THE TOADS -->
+  <h2 class="section-h" id="population">3. The Toads</h2>
   <p class="section-body">
     The original 99, forever. All claimed through the distribution lanes above.
-    Every cat below is unique — generated from its holder's wallet.
-    Click any cat for its details.
+    Every toad below is unique — generated from its holder's wallet.
+    Click any toad for its details.
   </p>
 
-  <div class="cats-grid-header">
+  <div class="toads-grid-header">
     <button class="grid-tab active" onclick="filterGrid('all',this)">all 99</button>
     <button class="grid-tab" onclick="filterGrid('holders',this)">holders</button>
     <button class="grid-tab" onclick="filterGrid('creators',this)">creators</button>
   </div>
 
-  <div class="cats-grid" id="cats-grid"></div>
+  <div class="toads-grid" id="toads-grid"></div>
 
 </div><!-- /content -->
 
@@ -435,11 +435,11 @@ hr{border:none;border-top:1px solid var(--brd);margin:8px 0 28px;}
   <div class="footer-links">
     <a id="footer-twitter" href="#" target="_blank">twitter</a>
     <span class="footer-sep">|</span>
-    <a id="footer-buy" href="#" target="_blank">buy $cat</a>
+    <a id="footer-buy" href="#" target="_blank">buy $TOAD</a>
     <span class="footer-sep">|</span>
     <a href="#" onclick="copyCA();return false;">copy ca</a>
   </div>
-  <p class="footer-note">$cat · the genesis collection · solana · not financial advice</p>
+  <p class="footer-note">$TOAD · the genesis collection · solana · not financial advice</p>
 </div>
 
 </div><!-- /page-wrap -->
@@ -453,8 +453,8 @@ document.getElementById('footer-buy').href=CONFIG.BUY;
 document.getElementById('coin-buy-link').href=CONFIG.BUY;
 
 const caText=CONFIG.CA||'— contract address coming soon —';
-document.getElementById('ca-display').textContent='$cat: '+caText;
-document.getElementById('ca-inline').textContent='$cat: '+caText;
+document.getElementById('ca-display').textContent='$TOAD: '+caText;
+document.getElementById('ca-inline').textContent='$TOAD: '+caText;
 
 function copyCA(){
   const t=document.getElementById('toast');
@@ -462,8 +462,8 @@ function copyCA(){
   navigator.clipboard.writeText(CONFIG.CA).then(()=>{t.textContent='copied';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);});
 }
 
-/* ── PIXEL CAT GENERATOR ── */
-// Each cat is deterministically generated from a seed (wallet hash sim)
+/* ── PIXEL TOAD GENERATOR ── */
+// Each toad is deterministically generated from a seed (wallet hash sim)
 // BG colors, coat colors, eye style, posture variant
 
 const BG_COLORS=[
@@ -489,99 +489,68 @@ function hashStr(s){
   let h=5381;for(let i=0;i<s.length;i++){h=((h<<5)+h)+s.charCodeAt(i);}return h>>>0;
 }
 
-function drawPixelCat(canvas,seed){
+function drawPixelToad(canvas,seed){
   const ctx=canvas.getContext('2d');
   const W=canvas.width,H=canvas.height;
-  const PX=W/8; // 8x8 grid
+  const PX=W/8;
   ctx.clearRect(0,0,W,H);
 
   const s=hashStr(seed.toString());
   const bgColor=BG_COLORS[seededRand(s,BG_COLORS.length)];
   const coatColor=COAT_COLORS[seededRand(s+1,COAT_COLORS.length)];
   const eyeColor=EYE_COLORS[seededRand(s+2,EYE_COLORS.length)];
-  const noseColor=NOSE_COLORS[seededRand(s+3,NOSE_COLORS.length)];
-  const posture=seededRand(s+4,3); // 0=sit,1=stand,2=alert
-  const hasEar=seededRand(s+5,4)>0; // 75% have upright ear anomaly
-  const hasSpot=seededRand(s+6,3)===0; // 33% have spot
+  const posture=seededRand(s+4,3);
+  const hasBump=seededRand(s+5,4)>0;
+  const hasSpot=seededRand(s+6,3)===0;
 
-  // fill bg
   ctx.fillStyle=bgColor;ctx.fillRect(0,0,W,H);
 
-  function px(x,y,col){
-    ctx.fillStyle=col;ctx.fillRect(x*PX,y*PX,PX,PX);
-  }
+  function px(x,y,col){ctx.fillStyle=col;ctx.fillRect(x*PX,y*PX,PX,PX);}
 
   if(posture===0){
-    // SITTING CAT
-    // body
-    px(2,4,coatColor);px(3,4,coatColor);px(4,4,coatColor);px(5,4,coatColor);
-    px(2,5,coatColor);px(3,5,coatColor);px(4,5,coatColor);px(5,5,coatColor);
-    // head
-    px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);px(5,2,coatColor);
-    px(2,3,coatColor);px(3,3,coatColor);px(4,3,coatColor);px(5,3,coatColor);
-    // ears
-    if(hasEar){px(1,1,coatColor);px(2,1,coatColor);}
-    px(5,1,coatColor);px(4,1,coatColor);
-    // eyes
-    px(3,2,eyeColor);px(5,2,eyeColor);
-    // nose
-    px(4,3,noseColor);
-    // tail
-    px(6,5,coatColor);px(6,4,coatColor);
-    // legs
-    px(2,6,coatColor);px(5,6,coatColor);
-    // spot
-    if(hasSpot)px(3,5,'rgba(0,0,0,0.35)');
+    // SITTING TOAD — round, wide, bulging eyes, no tail
+    px(1,0,eyeColor);px(6,0,eyeColor);
+    px(1,1,eyeColor);px(2,1,'#3A3028');px(5,1,'#3A3028');px(6,1,eyeColor);
+    for(let c=1;c<=6;c++){px(c,2,coatColor);px(c,3,coatColor);}
+    for(let c=2;c<=5;c++)px(c,3,'#3A3028');
+    for(let c=0;c<=7;c++)px(c,4,coatColor);
+    for(let c=1;c<=6;c++)px(c,5,coatColor);
+    px(1,6,coatColor);px(2,6,coatColor);px(5,6,coatColor);px(6,6,coatColor);
+    px(1,7,eyeColor);px(2,7,eyeColor);px(5,7,eyeColor);px(6,7,eyeColor);
+    if(hasBump){px(2,4,'#3A3028');px(5,4,'#3A3028');}
+    if(hasSpot){px(3,4,'rgba(0,0,0,0.3)');px(4,5,'rgba(0,0,0,0.3)');}
   } else if(posture===1){
-    // STANDING CAT
-    px(2,3,coatColor);px(3,3,coatColor);px(4,3,coatColor);px(5,3,coatColor);
-    px(2,4,coatColor);px(3,4,coatColor);px(4,4,coatColor);px(5,4,coatColor);
-    // head
-    px(1,2,coatColor);px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);
-    px(1,3,coatColor);px(2,3,coatColor);
-    // ear
-    if(hasEar){px(1,1,coatColor);}
-    px(3,1,coatColor);
-    // snout
-    px(0,3,coatColor);px(0,2,coatColor);
-    // eyes
-    px(2,2,eyeColor);px(4,2,eyeColor);
-    // nose
-    px(0,2,noseColor);
-    // legs
-    px(2,5,coatColor);px(3,5,coatColor);px(4,5,coatColor);px(5,5,coatColor);
-    px(2,6,coatColor);px(5,6,coatColor);
-    // tail
-    px(6,3,coatColor);px(7,2,coatColor);
-    if(hasSpot)px(4,4,'rgba(0,0,0,0.3)');
+    // STANDING TOAD — alert, wider stance
+    px(0,0,eyeColor);px(5,0,eyeColor);
+    px(0,1,'#3A3028');px(1,1,eyeColor);px(4,1,eyeColor);px(5,1,'#3A3028');
+    px(1,2,coatColor);px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);px(5,2,coatColor);
+    for(let c=0;c<=5;c++)px(c,3,coatColor);
+    px(1,3,'#3A3028');px(2,3,'#3A3028');px(3,3,'#3A3028');px(4,3,'#3A3028');
+    for(let c=0;c<=6;c++)px(c,4,coatColor);
+    for(let c=1;c<=5;c++)px(c,5,coatColor);
+    px(0,6,coatColor);px(1,6,coatColor);px(4,6,coatColor);px(5,6,coatColor);
+    px(0,7,eyeColor);px(1,7,eyeColor);px(4,7,eyeColor);px(5,7,eyeColor);
+    if(hasBump)px(3,4,'#3A3028');
+    if(hasSpot)px(3,5,'rgba(0,0,0,0.3)');
   } else {
-    // ALERT CAT (ears up, head raised)
-    // body
-    px(2,4,coatColor);px(3,4,coatColor);px(4,4,coatColor);px(5,4,coatColor);
-    px(2,5,coatColor);px(3,5,coatColor);px(4,5,coatColor);px(5,5,coatColor);
-    // neck
-    px(3,3,coatColor);px(4,3,coatColor);
-    // head
-    px(2,2,coatColor);px(3,2,coatColor);px(4,2,coatColor);px(5,2,coatColor);
-    px(2,1,coatColor);px(5,1,coatColor); // tall ears
-    px(3,1,coatColor);px(4,1,coatColor);
-    // eyes (wide)
-    px(2,2,eyeColor);px(5,2,eyeColor);
-    // nose
-    px(3,3,noseColor);
-    // tail (wagging)
-    px(6,4,coatColor);px(7,3,coatColor);
-    // legs
-    px(2,6,coatColor);px(5,6,coatColor);
-    if(hasSpot){px(3,5,'rgba(0,0,0,0.28)');px(4,5,'rgba(0,0,0,0.28)');}
+    // BASKING TOAD — flat, wide, low to ground
+    px(1,1,eyeColor);px(6,1,eyeColor);
+    for(let c=0;c<=7;c++){px(c,2,coatColor);px(c,3,coatColor);}
+    px(1,3,'#3A3028');px(2,3,'#3A3028');px(5,3,'#3A3028');px(6,3,'#3A3028');
+    for(let c=1;c<=6;c++)px(c,4,coatColor);
+    for(let c=2;c<=5;c++)px(c,5,coatColor);
+    px(2,6,coatColor);px(3,6,coatColor);px(4,6,coatColor);px(5,6,coatColor);
+    px(2,7,eyeColor);px(3,7,eyeColor);px(4,7,eyeColor);px(5,7,eyeColor);
+    if(hasBump){px(3,2,'#3A3028');px(4,2,'#3A3028');}
+    if(hasSpot){px(3,4,'rgba(0,0,0,0.28)');px(4,4,'rgba(0,0,0,0.28)');}
   }
 }
 
 // ── DRAW SHOWCASE ──
-drawPixelCat(document.getElementById('showcase-cat-a'),42);
-drawPixelCat(document.getElementById('showcase-cat-b'),42*7+999);
+drawPixelToad(document.getElementById('showcase-toad-a'),42);
+drawPixelToad(document.getElementById('showcase-toad-b'),42*7+999);
 
-// ── CAT DATA ──
+// ── TOAD DATA ───
 const OWNERS_SHORT=[
   'MazD..R1bt','BXoT..EwYw','boso..5zLB','FhtN..QtDs','D8tc..Wr4n',
   'Gm77..STiD','ZGtm..bALB','FKSo..uvsR','1EWu..NDix','1EWu..NDix',
@@ -608,9 +577,9 @@ const LANES=[
   ...Array(25).fill('threshold'),
 ];
 
-const allCats=Array.from({length:99},(_,i)=>({
+const allToads=Array.from({length:99},(_,i)=>({
   num:i+1,
-  seed:hashStr('cat'+i*7+i*i),
+  seed:hashStr('toad'+i*7+i*i),
   owner:OWNERS_SHORT[i]||'—',
   lane:LANES[i]||'threshold',
   listed:i===7||i===22||i===32, // mock
@@ -627,37 +596,37 @@ function filterGrid(f,btn){
 }
 
 function buildGrid(){
-  const grid=document.getElementById('cats-grid');
+  const grid=document.getElementById('toads-grid');
   grid.innerHTML='';
-  const filtered=currentFilter==='all'?allCats:allCats.filter(d=>d.lane===currentFilter);
-  filtered.forEach(cat=>{
+  const filtered=currentFilter==='all'?allToads:allToads.filter(d=>d.lane===currentFilter);
+  filtered.forEach(toad=>{
     const cell=document.createElement('div');
-    cell.className='cat-cell';
-    cell.title='#'+String(cat.num).padStart(2,'0')+' · '+cat.owner;
+    cell.className='toad-cell';
+    cell.title='#'+String(toad.num).padStart(2,'0')+' · '+toad.owner;
 
     const frame=document.createElement('div');
-    frame.className='cat-frame';
+    frame.className='toad-frame';
 
     const cvs=document.createElement('canvas');
     cvs.width=32;cvs.height=32;
     cvs.style.cssText='width:100%;height:100%;image-rendering:pixelated;';
-    drawPixelCat(cvs,cat.seed);
+    drawPixelToad(cvs,toad.seed);
     frame.appendChild(cvs);
 
-    if(cat.listed){
+    if(toad.listed){
       const badge=document.createElement('span');
       badge.className='listed-badge';
-      badge.textContent=cat.price;
+      badge.textContent=toad.price;
       frame.appendChild(badge);
     }
 
     const num=document.createElement('span');
-    num.className='cat-num';
-    num.textContent='#'+String(cat.num).padStart(2,'0');
+    num.className='toad-num';
+    num.textContent='#'+String(toad.num).padStart(2,'0');
 
     const owner=document.createElement('span');
-    owner.className='cat-owner';
-    owner.textContent=cat.owner;
+    owner.className='toad-owner';
+    owner.textContent=toad.owner;
 
     cell.appendChild(frame);
     cell.appendChild(num);
